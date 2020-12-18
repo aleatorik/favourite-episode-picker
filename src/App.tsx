@@ -9,7 +9,7 @@ export default function App(): JSX.Element {
   });
   const fetchDataAction = async () => {
     const URL =
-      "http://api.tvmaze.com/singlesearch/shows?q=Simpsons&embed=episodes";
+      "https://api.tvmaze.com/singlesearch/shows?q=rick-&-morty&embed=episodes";
     const data = await fetch(URL);
     const dataJSON = await data.json();
     return dispatch({
@@ -17,11 +17,26 @@ export default function App(): JSX.Element {
       payload: dataJSON._embedded.episodes,
     });
   };
-  console.log(state);
   return (
     <>
       <h1>The Simpsons</h1>
       <p>Pick your favourite episode!</p>
+      <section>
+        {state.episodes.map((episode: any) => {
+          return (
+            <section key={episode.id}>
+              <img
+                src={episode.image.medium}
+                alt={`The Simpsons ${episode.name}`}
+              />
+              <div>{episode.name}</div>
+              <section>
+                Season: {episode.season} Number: {episode.number}
+              </section>
+            </section>
+          );
+        })}
+      </section>
     </>
   );
 }
