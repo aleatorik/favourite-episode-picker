@@ -1,20 +1,7 @@
 import React from "react";
 import "./index.css";
-import { Store, IAction } from "./Store";
-
-interface IEpisode {
-  airdate: string;
-  airstamp: string;
-  airtime: string;
-  id: number;
-  image: { medium: string; original: string };
-  name: string;
-  number: number;
-  runtime: number;
-  season: number;
-  summary: string;
-  url: string;
-}
+import { Store } from "./Store";
+import { IAction, IEpisode } from "./interfaces";
 
 export default function App(): JSX.Element {
   const { state, dispatch } = React.useContext(Store);
@@ -38,6 +25,8 @@ export default function App(): JSX.Element {
       type: "ADD_FAV",
       payload: episode,
     });
+
+  console.log(state);
 
   return (
     <>
