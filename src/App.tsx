@@ -1,6 +1,6 @@
 import React from "react";
 import "./index.css";
-import { Store } from "./Store";
+import { Store, IAction } from "./Store";
 
 interface IEpisode {
   airdate: string;
@@ -33,7 +33,11 @@ export default function App(): JSX.Element {
     });
   };
 
-  console.log(state);
+  const toggleFavAction = (episode: IEpisode): IAction =>
+    dispatch({
+      type: "ADD_FAV",
+      payload: episode,
+    });
 
   return (
     <>
@@ -51,7 +55,12 @@ export default function App(): JSX.Element {
               />
               <div>{episode.name}</div>
               <section>
-                Season: {episode.season} Number: {episode.number}
+                <div>
+                  Season: {episode.season} Number: {episode.number}
+                </div>
+                <button type="button" onClick={() => toggleFavAction(episode)}>
+                  Fav
+                </button>
               </section>
             </section>
           );
