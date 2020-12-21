@@ -48,31 +48,7 @@ export default function App(): JSX.Element {
         </div>
         <div>Favourite(s): {state.favourites.length}</div>
       </header>
-      <section className="episode-layout">
-        {state.episodes.map((episode: IEpisode) => {
-          return (
-            <section key={episode.id} className="episode-box">
-              <img
-                src={episode.image.medium}
-                alt={`The Simpsons ${episode.name}`}
-              />
-              <div>{episode.name}</div>
-              <section>
-                <div>
-                  Season: {episode.season} Number: {episode.number}
-                </div>
-                <button type="button" onClick={() => toggleFavAction(episode)}>
-                  {state.favourites.find(
-                    (fav: IEpisode) => fav.id === episode.id
-                  )
-                    ? "Unfav"
-                    : "Fav"}
-                </button>
-              </section>
-            </section>
-          );
-        })}
-      </section>
+      <section className="episode-layout"></section>
     </>
   );
 }
