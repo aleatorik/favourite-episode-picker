@@ -3,6 +3,8 @@ import "./index.css";
 import { Store } from "./Store";
 import { IAction, IEpisode } from "./interfaces";
 
+const EpisodeList = React.lazy<any>(() => import("./EpisodesList"));
+
 export default function App(): JSX.Element {
   const { state, dispatch } = React.useContext(Store);
 
@@ -37,6 +39,13 @@ export default function App(): JSX.Element {
     }
     return dispatch(dispatchObj);
   };
+
+  const props = {
+    episodes: state.episodes,
+    toggleFavAction,
+    favourites: state.favourites,
+  };
+
   console.log(state);
 
   return (
@@ -48,7 +57,11 @@ export default function App(): JSX.Element {
         </div>
         <div>Favourite(s): {state.favourites.length}</div>
       </header>
-      <section className="episode-layout"></section>
+      <React.Suspense fallback={<div>loading ...</div>}>
+        <section className="episode-layout">
+          <EpisodeList {...props} />
+        </section>
+      </React.Suspense>
     </>
   );
 }
