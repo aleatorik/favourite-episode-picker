@@ -10,6 +10,12 @@ export interface IAction {
   payload: any;
 }
 
+export interface IEpisodeProps {
+  episodes: Array<IEpisode>;
+  toggleFavAction: (episode: IEpisode) => IAction;
+  favourites: Array<IEpisode>;
+}
+
 export interface IEpisode {
   airdate: string;
   airstamp: string;
