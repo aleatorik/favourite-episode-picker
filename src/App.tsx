@@ -2,6 +2,7 @@ import React from "react";
 import "./index.css";
 import { Store } from "./Store";
 import { IAction, IEpisode, IEpisodeProps } from "./interfaces";
+import { Link } from "@reach/router";
 
 const EpisodeList = React.lazy<any>(() => import("./EpisodesList"));
 
@@ -55,7 +56,10 @@ export default function App(): JSX.Element {
           <h1>The Simpsons</h1>
           <p>Pick your favourite episode!</p>
         </div>
-        <div>Favourite(s): {state.favourites.length}</div>
+        <div>
+          <Link to="/">Home</Link>
+          <Link to="/faves">Favourite(s): {state.favourites.length}</Link>
+        </div>
       </header>
       <React.Suspense fallback={<div>loading ...</div>}>
         <section className="episode-layout">
