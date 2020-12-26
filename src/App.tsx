@@ -2,7 +2,7 @@ import React from "react";
 import { Store } from "./Store";
 import { Link } from "@reach/router";
 
-export default function App(props: any): JSX.Element {
+export default function App(props: any) {
   const { state } = React.useContext(Store);
 
   return (
