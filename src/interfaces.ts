@@ -9,7 +9,7 @@ export interface IState {
 
 export interface IAction {
   type: string;
-  payload: any;
+  payload: Array<IEpisode>;
 }
 
 export interface IEpisodeProps {
